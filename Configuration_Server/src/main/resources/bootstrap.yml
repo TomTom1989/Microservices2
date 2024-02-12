@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: vault
+  cloud:
+    config:
+      server:
+        # Native configuration
+        native:
+          search-locations: classpath:/config
+        # Git configuration
+        #git:
+         # uri: https://github.com/xxxxxxxxxxx/config.git
+          #searchPaths: licensingservice
+        # Vault configuration
+        vault:
+          host: 127.0.0.1
+          port: 8200
+          kvVersion: 2
+          backend: licensing-service
+          defaultKey: default
+
+server:
+  port: 8071
+
+encrypt:
+  key: secretkey
